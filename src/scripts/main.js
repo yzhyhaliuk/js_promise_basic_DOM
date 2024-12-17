@@ -6,12 +6,17 @@ const promise1 = new Promise((resolve) => {
 
   message.className = 'message';
 
-  logo.addEventListener('click', () => {
+  const clickHandle = () => {
     const text = 'Promise was resolved!';
 
     message.append(text);
-  });
-  resolve(message);
+
+    resolve(message);
+
+    logo.removeEventListener('click', clickHandle);
+  };
+
+  logo.addEventListener('click', clickHandle);
 });
 
 const promise2 = new Promise((resolve, reject) => {
